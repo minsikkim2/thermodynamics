@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { Arrow } from '../../../../components/Arrow'
 import { ConceptCard } from '../../../../components/ConceptCard'
 import { FormulaBlock } from '../../../../components/FormulaBlock'
@@ -137,6 +138,13 @@ export function SecondLaw() {
           <>열흐름 방향을 &ldquo;저온 → 고온&rdquo;으로 바꿔 보세요. 전체 엔트로피가 줄어들어 저절로는 불가능합니다.</>,
         ]}
       />
+      <Link
+        to="/cycles/carnot"
+        className="flex items-center justify-between rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm font-medium text-indigo-800 hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-950/40 dark:text-indigo-200 dark:hover:bg-indigo-950/70"
+      >
+        <span>열기관과 사이클 탭에서 카르노 사이클을 단계별로 살펴보기</span>
+        <span aria-hidden>→</span>
+      </Link>
     </ConceptCard>
   )
 }

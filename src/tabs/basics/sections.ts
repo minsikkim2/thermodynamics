@@ -1,10 +1,5 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from 'react'
-
-export interface SectionConfig {
-  id: string
-  title: string
-  component: LazyExoticComponent<ComponentType>
-}
+import { lazy } from 'react'
+import type { SectionConfig } from '../../layout/SectionedTab'
 
 /** "기본 개념" 탭의 섹션 목록. 사이드바와 라우팅이 이 배열에서 만들어진다. */
 export const sections: SectionConfig[] = [

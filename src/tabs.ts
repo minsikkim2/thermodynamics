@@ -18,7 +18,12 @@ export const tabs: TabConfig[] = [
     path: 'basics',
     component: lazy(() => import('./tabs/basics/BasicsTab')),
   },
-  { id: 'cycles', label: '열기관/사이클', path: 'cycles' },
+  {
+    id: 'cycles',
+    label: '열기관과 사이클',
+    path: 'cycles',
+    component: lazy(() => import('./tabs/cycles/CyclesTab')),
+  },
   { id: 'phase', label: '상평형', path: 'phase' },
   { id: 'chemical', label: '화학 열역학', path: 'chemical' },
 ]

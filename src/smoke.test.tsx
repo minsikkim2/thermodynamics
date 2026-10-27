@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { sections } from './tabs/basics/sections'
+import { sections as cycleSections } from './tabs/cycles/sections'
 import { tabs } from './tabs'
 
 /** 모든 탭과 섹션이 런타임 오류 없이 렌더되는지 확인하는 스모크 테스트 */
@@ -49,6 +50,20 @@ describe('스모크: 라우팅과 섹션 렌더', () => {
       expect(errors.filter((e) => !e.includes('width(0) and height(0)'))).toEqual([])
     })
   }
+
+  for (const s of cycleSections) {
+    it(`/cycles/${s.id} 렌더`, async () => {
+      const errors = await renderAt(`/cycles/${s.id}`)
+      expect(await screen.findByRole('heading', { level: 1, name: s.title })).toBeTruthy()
+      expect(errors.filter((e) => !e.includes('width(0) and height(0)'))).toEqual([])
+    })
+  }
+
+  it('제2법칙 카드에서 카르노 섹션으로 가는 링크', async () => {
+    await renderAt('/basics/laws')
+    const link = await screen.findByRole('link', { name: /카르노 사이클을 단계별로/ })
+    expect(link.getAttribute('href')).toBe('/cycles/carnot')
+  })
 
   it('준비 중인 탭', async () => {
     const pending = tabs.find((t) => !t.component)!
